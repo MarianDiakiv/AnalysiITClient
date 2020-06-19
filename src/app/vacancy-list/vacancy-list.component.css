@@ -1,0 +1,38 @@
+.vacancy-item{
+  background-color: ghostwhite;
+  margin-top: 2%;
+  box-shadow: darkgray;
+}
+.black-font{
+  background-color: black;
+}
+.radiobutton-style{
+  margin-left: 10px;
+}
+.site-button{
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.panel-list{
+  margin-top: 5%;
+}
+.button-panel-item{
+  width: 100%;
+}
+.row-top-matgin{
+  margin-top: 3%;
+}
+
+.row-top-matgin-details{
+  margin-top: 6%;
+}
+/*////////*/
+
+.custom-select{
+  width: 100%;
+  color: #4876FF;
+}
+.select-option{
+  width: 50px;
+}
+

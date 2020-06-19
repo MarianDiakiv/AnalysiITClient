@@ -1,0 +1,43 @@
+.row-top-margin{
+  margin-top: 5%;
+  /*background-color: blue ;*/
+}
+.row-left-margin{
+  margin-left: 10%;
+}
+.row-left-margin-detail-info{
+  margin-left: 20%;
+  width: 900px;
+}
+.button-backrounf{
+  width: 100%;
+  background-color: powderblue;
+}
+.row-top-matgin-details{
+  margin-top: 6%;
+}
+/*.panel-width{*/
+  /*width: 800px;*/
+/*}*/
+.position-Under{
+  position: absolute;
+  padding-top: 5%;
+}
+.lang-style{
+font-family: "Times New Roman";
+  font-style: oblique;
+  font-size: 16px;
+  color: darkgray;
+}
+.margin-left-li{
+  margin-left: 30px;
+}
+.text-style{
+  font-family: "Times New Roman";
+  /*font-style: oblique;*/
+  font-size: 20px;
+  color: black;
+}
+.text-company{
+  font-size: 18px;
+}

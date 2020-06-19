@@ -1,0 +1,146 @@
+<div class="conteiner" >
+  <div class="row">
+    <div class="col-sm-12">
+      <app-nav-panel></app-nav-panel>
+    </div>
+
+  </div>
+  <div class="row row-top-margin" >
+    <div class ="col-sm-3 panel-width"  >
+      <ul class="list-group list-group-flush panel-list">
+        <li class="list-group-item">
+
+          <input type="button" (click)="languageStatisticOpen()" value=" Мови прогрмування "  class=" btn  text-body button-panel-item">
+
+        </li>
+        <li class="list-group-item">
+          <input type="button" (click)="languageStatisticSelectedOpen()" value=" Мови вибірка " class="btn  text-body button-panel-item" >
+        </li>
+        <li class="list-group-item">
+          <input type="button" (click)="subscribeStatisticOpen()" value=" ПІдписки " class="btn  text-body button-panel-item" >
+        </li>
+        <li class="list-group-item">
+          <input type="button" (click)="companyStatisticOpen()" value=" Топ 10 компаній" class="btn  text-body button-panel-item" >
+        </li>
+        <li class="list-group-item">
+          <input type="button" (click)="downloadFile()" value="Завантажити" class="btn  text-body button-panel-item" >
+        </li>
+        <li class="list-group-item">
+          <input type="button" (click)="detailCompanyOpen()" value="Детальна інформація по компанії" class="btn  text-body button-panel-item" >
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+        <div class="row row-top-margin row-left-margin" [hidden]="languageStatisticBool">
+          <h3> Кількість вакансій із поточної вибірки у кожній мові програмування</h3>
+          <table class="table table-striped ">
+            <tr>
+              <th>Мова/Напрям</th>
+              <td *ngFor="let lang of languageSelectedList" >{{lang.language}}</td>
+            </tr>
+            <tr>
+              <th>Кількість</th>
+              <td *ngFor="let lang of languageSelectedList" >{{lang.count}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="row row-top-margin row-left-margin" [hidden]="languageStatisticSelectedBool">
+          <h3> Кількість вакансій із 5 останніх вибірок у кожній мові програмування</h3>
+          <table class="table table-striped">
+            <tr>
+              <th> Мови</th>
+              <td *ngFor="let l of allLanguage ">
+                {{l}}
+              </td>
+            </tr>
+            <tr *ngFor="let s of allStatistisc ">
+              <th> {{s.data}}  </th>
+              <td *ngFor="let t of s.countArrayList"> {{t.count}}</td>
+              <!--<td> {{t.count}}</td>-->
+            </tr>
+          </table>
+        </div>
+      <div class="row row-top-margin row-left-margin" [hidden]="subscribeStatisticsOpen">
+        <h3> Кількість підписок по кожній із мов програмування</h3>
+        <table class="table table-striped ">
+          <tr>
+            <th>Мова</th>
+            <td *ngFor="let lang of userSubscribes" >{{lang.language}}</td>
+          </tr>
+          <tr>
+            <th >Кількість</th>
+            <td *ngFor="let lang of userSubscribes" >{{lang.count}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="row row-top-margin row-left-margin" [hidden]="companyStatisticBool" >
+        <h3> Топ 10 компаній по кількості вакансій на усі посади та мови програмування</h3>
+        <table class="table table-striped">
+          <tr>
+            <th class="text-style"> Компанія</th>
+            <th class="text-style">Кількість вакансій       </th>
+          </tr>
+          <tr *ngFor="let s of topCompany ">
+            <td class="text-company"> {{s.company}}
+              <table>
+                <tr *ngFor="let lang of s.languageCounts" >
+                  <td class="lang-style">{{lang.language}}</td>
+                </tr>
+              </table>
+            </td>
+            <td class="text-company"> {{s.count}}
+              <table>
+                <tr *ngFor="let lang of s.languageCounts" >
+                  <td class="lang-style">{{lang.count}}</td>
+                </tr>
+              </table>
+            </td>
+
+            <!--<td> {{t.count}}</td>-->
+          </tr>
+        </table>
+        <!--<p>aibciusbciubsicubeiucccccccccccccccccccccccccccccccccccccdbcisbdiucbisducbisdbcuidbcidbcisudbcsdjchbsjdycbsjbdk</p>-->
+      </div>
+      <div class="row row-top-margin row-left-margin-detail-info" [hidden]="detailCompanyOpenBool" >
+        <div class="col-sm-12">
+          <div class="row">
+            <h3> Детальна інформація по компанії </h3>
+          </div>
+
+          <div class="row">
+            <div class="row">
+              <p> Компанія: <input class="text-input" [(ngModel)]="companyName" [ngModelOptions]="{standalone: true}" type="text" >
+                <input  type="button" class="btn  text-body button-panel-item" value="Знайти" (click)="companyDetailInfo()">
+              </p>
+            </div>
+
+            <div class="row position-Under">
+              <ul *ngFor="let detailInfoCompany of companyDetailInfoL">
+                <li *ngFor="let lang of detailInfoCompany.languagePositions">
+                  Мова {{lang.language}}
+                  <ul *ngFor="let position of lang.positionCounts" >
+                    <li>Посада {{position.position}} </li>
+                    <li class ="margin-left-li">Кількість {{position.count}}</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="col-sm-1"></div>
+
+  </div>
+  <div class="row-top-matgin-details row">
+    <app-footer></app-footer>
+  </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,180 @@
+<!--<p>email-subscribe works!</p>-->
+<div class="container-fluid" >
+  <div class="row" >
+    <app-nav-panel></app-nav-panel>
+  </div>
+  <div class="row row-width">
+    <div class="col-sm-4" ></div>
+    <div class="col-sm-8" > <p>На даній сторінці ви можете обрати декілька мов/напрямів програмування для отримання сповіщень про нові вакансії </p>
+      <div class="justify-content-center">
+        <input type="button" (click)="languagelistopen()" value=" Підписатись "  class=" btn btn-primary text-body button-panel-item open-button">
+          <div class="row">
+            <div class="col-sm-12">
+              <div [hidden]="openlanguagelistval" class="margin-top">
+                <!-- -->
+                <p>Оберіть мови програмування/напрям для підписки та введіть електорнну пошту  </p>
+                <P> Email: <input class="text-input"[(ngModel)]="mail" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email"  ></P>
+                <!--<br>-->
+
+                <p><input type="checkbox" id="myCheckJava"  [(ngModel)]="addJava" [ngModelOptions]="{standalone: true}" value="Java">
+                  <label for="myCheckJava" >Java</label></p>
+                <p><input type="checkbox" id="myCheckNET"  [(ngModel)]="addNET"  [ngModelOptions]="{standalone: true}"value="NET">
+                  <label for="myCheckNET" >.NET</label></p>
+                <p><input type="checkbox" id="myCheckPHP"  [(ngModel)]="addPHP"[ngModelOptions]="{standalone: true}" value="PHP">
+                  <label for="myCheckPHP"> PHP</label></p>
+                <p><input type="checkbox" id="myCheckC++"  [(ngModel)]="addCpp"[ngModelOptions]="{standalone: true}" value="C++">
+                  <label for="myCheckC++"> C++</label></p>
+                <p><input type="checkbox" id="myCheckJavaScript"  [(ngModel)]="addJavaScript"[ngModelOptions]="{standalone: true}" value="JavaScript">
+                  <label for="myCheckJavaScript" >Java Script</label></p>
+                <p><input type="checkbox" id="myCheckPython"  [(ngModel)]="addPython"[ngModelOptions]="{standalone: true}" value="Python">
+                  <label for="myCheckPython" > Python</label></p>
+                <p><input type="checkbox" id="myCheckRuby"  [(ngModel)]="addRuby"[ngModelOptions]="{standalone: true}" value="Ruby">
+                  <label for="myCheckRuby" >Ruby</label></p>
+                <p><input type="checkbox" id="myCheckAndroid"  [(ngModel)]="addAndroid"[ngModelOptions]="{standalone: true}" value="Android">
+                  <label for="myCheckAndroid">Android</label> </p>
+                <p><input type="checkbox" id="myCheckDataScience"  [(ngModel)]="addDataScience"[ngModelOptions]="{standalone: true}" value="DataScience">
+                  <label for="myCheckDataScience" >Data Science</label></p>
+                <p><input type="checkbox" id="myCheckGoland"  [(ngModel)]="addGoland"[ngModelOptions]="{standalone: true}" value="Goland">
+                  <label for="myCheckGoland">Goland</label></p>
+                <p><input type="checkbox" id="myCheckIOS"  [(ngModel)]="addIOS"[ngModelOptions]="{standalone: true}" value="IOS">
+                  <label for="myCheckIOS" >IOS</label></p>
+                <p><input type="checkbox" id="myCheckQA"  [(ngModel)]="addQA"[ngModelOptions]="{standalone: true}" value="QA">
+                  <label for="myCheckQA" >QA</label></p>
+                <p><input type="checkbox" id="myCheckProjectManager" [(ngModel)] ="addProjectManager" [ngModelOptions]="{standalone: true}" value="ProjectManager">
+                  <label for="myCheckProjectManager" >ProjectManager</label>ProjectManager</p>
+                <input type="button" class="btn " value="Підписатися" (click)="save()" >
+
+              </div>
+            </div>
+          </div>
+        <input type ="button" (click)="canselSubscribe()" value="Скасування" class=" btn btn-primary text-body button-panel-item open-button" >
+        <div class="row" >
+          <div class="col-sm-12" >
+            <div [hidden]="cancelHiden" class="margin-top" >
+              <p>Скасовуючи підписку ваші дані буде видалено і ви не отримуватимете повідомлень із сайту. Для цього введіть вашу електронну адресу. </p>
+              <P> Email: <input class="text-input"[(ngModel)]="emailCansel" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email"  ></P>
+              <p><input type="button" class="btn btn btn-primary" value="Скасувати підписку" (click)="cancel()" ></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="row row-top-matgin-details">
+    <app-footer></app-footer>
+  </div>
+</div>
+
+<!--<div class="container-fluid">-->
+  <!--<div class="row row-top-matgin"  >-->
+    <!--<div class="col-sm-2" ></div>-->
+    <!--<div class="col-sm-9" >-->
+      <!--<app-nav-panel></app-nav-panel>-->
+    <!--</div>-->
+    <!--<div class="col-sm-1" ></div>-->
+  <!--</div>-->
+  <!--<div class="row row-top-matgin-emil-component">-->
+    <!--<ul class="list-group list-group-flush panel-list">-->
+      <!--<li class="list-group-item">-->
+        <!--<input type="button" (click)="languagelistopen()" value=" Підписатись "  class=" btn btn-primary text-body button-panel-item">-->
+      <!--</li>-->
+      <!--<div [hidden]="openlanguagelistval">-->
+        <!--&lt;!&ndash;<div class="row row-top-matgin-emil-component">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="col-sm-12">&ndash;&gt;-->
+        <!--<div class="  justify-content-center" >-->
+          <!--<form class="form-check">-->
+            <!--<P> Email: <input class="text-input"[(ngModel)]="mail" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email"  ></P>-->
+            <!--<br>-->
+            <!--<p>Виберіть мови для підписки </p>-->
+            <!--<div>-->
+              <!--&lt;!&ndash;<div *ngFor="let lang of language" >&ndash;&gt;-->
+              <!--&lt;!&ndash;<p><input type="checkbox" id=lang  ng-model="javaModel" [checked]="addLanguage()" value=lang> {{lang}}</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<input type="button" class="btn btn btn-primary" value="Підписатися" >&ndash;&gt;-->
+
+              <!--<p><input type="checkbox" id="myCheckJava"  [(ngModel)]="addJava" [ngModelOptions]="{standalone: true}" value="Java" >Java</p>-->
+              <!--<p><input type="checkbox" id="myCheckNET"  [(ngModel)]="addNET"  [ngModelOptions]="{standalone: true}"value="NET"> .NET</p>-->
+              <!--<p><input type="checkbox" id="myCheckPHP"  [(ngModel)]="addPHP"[ngModelOptions]="{standalone: true}" value="PHP"> PHP</p>-->
+              <!--<p><input type="checkbox" id="myCheckC++"  [(ngModel)]="addCpp"[ngModelOptions]="{standalone: true}" value="C++"> C++</p>-->
+              <!--<p><input type="checkbox" id="myCheckJavaScript"  [(ngModel)]="addJavaScript"[ngModelOptions]="{standalone: true}" value="JavaScript"> Java Script</p>-->
+              <!--<p><input type="checkbox" id="myCheckPython"  [(ngModel)]="addPython"[ngModelOptions]="{standalone: true}" value="Python"> Python</p>-->
+              <!--<p><input type="checkbox" id="myCheckRuby"  [(ngModel)]="addRuby"[ngModelOptions]="{standalone: true}" value="Ruby"> Ruby</p>-->
+              <!--<p><input type="checkbox" id="myCheckAndroid"  [(ngModel)]="addAndroid"[ngModelOptions]="{standalone: true}" value="Android"> Android</p>-->
+              <!--<p><input type="checkbox" id="myCheckDataScience"  [(ngModel)]="addDataScience"[ngModelOptions]="{standalone: true}" value="DataScience"> Data Science</p>-->
+              <!--<p><input type="checkbox" id="myCheckGoland"  [(ngModel)]="addGoland"[ngModelOptions]="{standalone: true}" value="Goland"> Goland</p>-->
+              <!--<p><input type="checkbox" id="myCheckIOS"  [(ngModel)]="addIOS"[ngModelOptions]="{standalone: true}" value="IOS"> IOS</p>-->
+              <!--<p><input type="checkbox" id="myCheckQA"  [(ngModel)]="addQA"[ngModelOptions]="{standalone: true}" value="QA"> QA</p>-->
+              <!--<p><input type="checkbox" id="myCheckProjectManager" [(ngModel)] ="addProjectManager" [ngModelOptions]="{standalone: true}" value="ProjectManager"> ProjectManager</p>-->
+              <!--<input type="button" class="btn btn btn-primary" value="Підписатися" (click)="save()" >-->
+            <!--</div>-->
+          <!--</form>-->
+
+        <!--</div>-->
+
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</div>-->
+      <!--<li class="list-group-item">-->
+        <!--<input type ="button" (click)="canselSubscribe()" value="Скасування" class=" btn btn-primary text-body button-panel-item" >-->
+      <!--</li>-->
+      <!--<div [hidden]="cancelHiden">-->
+        <!--<P> Email: <input class="text-input"[(ngModel)]="emailCansel" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email"  ></P>-->
+        <!--<p><input type="button" class="btn btn btn-primary" value="Скасувати підписку" (click)="cancel()" ></p>-->
+        <!--&lt;!&ndash;<p><button type="button" class="btn btn btn-primary" value="Скасувати підписку" (click)="cancel()" > Crfcedfnb gslgbcre</button></p>&ndash;&gt;-->
+      <!--</div>-->
+
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container" >-->
+  <!--<div class="row"><app-nav-panel></app-nav-panel></div>-->
+  <!--<div class="row row-top-matgin-details " >-->
+    <!--<div class="col-sm-2">-->
+      <!--&lt;!&ndash;пусто&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="col-sm-10">-->
+      <!--<div class="row" >-->
+
+        <!--<div class="col-sm-3" >-->
+          <!--<p class="text-info" > Компанія: </p>-->
+          <!--<p class="text-info" > Посада: </p>-->
+          <!--<p class="text-info" > Місто: </p>-->
+          <!--<p class="text-info" > Мова програмування: </p>-->
+          <!--<p class="text-info" > Дата:  </p>-->
+        <!--</div>-->
+        <!--<div class="col-sm-9" >-->
+          <!--<p>{{vacancy.company}}</p>-->
+          <!--<p>{{vacancy.position}}</p>-->
+          <!--<p>{{vacancy.sity}}</p>-->
+          <!--<p>{{vacancy.language}}</p>-->
+          <!--<p>{{vacancy.vacancyDetails.date}}</p>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row" >-->
+        <!--<div *ngFor="let det of vacancy.vacancyDetails.listDetails">-->
+          <!--{{det}}-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row"><a href= {{vacancy.urlSourse}}> Джерело вакансії </a> </div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="row-top-matgin-details row">-->
+    <!--<app-footer></app-footer>-->
+  <!--</div>-->
+
+<!--</div>-->

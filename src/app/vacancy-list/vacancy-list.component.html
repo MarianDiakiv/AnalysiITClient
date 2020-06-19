@@ -1,0 +1,112 @@
+
+
+<div class="container-fluid ">
+  <div class="row row-top-matgin"  >
+    <div class="col-sm-2" ></div>
+    <div class="col-sm-9" >
+      <app-nav-panel></app-nav-panel>
+    </div>
+    <div class="col-sm-1" ></div>
+
+  </div>
+  <div class="row row-top-matgin">
+    <div class="col-sm-2">
+      <!-- панелька-->
+
+      <ul class="list-group list-group-flush panel-list">
+        <li class="list-group-item">
+          <input type="button" (click)="languagelistopen()" value="Мови програмування "  class=" btn btn-primary text-body button-panel-item"></li>
+          <div [hidden]="openlanguagelistval">
+            <div  *ngFor="let lang of alllanguages">
+              <input type="button" [routerLink]="['/language-list',lang]" value="{{lang}}" class="btn  text-body site-button" >
+
+            </div>
+        </div>
+        <li class="list-group-item">
+          <input type ="button" (click)="sourseListOpen()" value="Джерело" class=" btn btn-primary text-body button-panel-item" >
+        </li>
+        <div [hidden] = "sourseBool" >
+          <input  type="button"  [routerLink]="['/sites-list/all']" class="btn text-body site-button" value="Всі сайти"  ><br>
+          <input  type="button" [routerLink]="['/sites-list/dou']" class="btn  text-body site-button" value="Dou.ua"><br>
+          <input  type="button"  [routerLink]="['/sites-list/djinni']" class="btn  text-body site-button" value="Djinni.co"><br>
+
+        </div>
+        <li class="list-group-item" >
+          <input type ="button" (click)="searchDetailOpen()" value="Розширений пошук" class=" btn btn-primary text-body button-panel-item" >
+        </li>
+        <div [hidden]="searchDetailBool" >
+          <p>Oберіть компанію</p>
+          <div >
+              <select class="custom-select" (click)="openLanguage(companyInput)" [(ngModel)]="companyInput" [ngModelOptions]="{standalone: true}"> >
+                <option class="select-option">---</option>
+                <option *ngFor="let comp of companyList" class="select-option" >
+                  {{comp}}
+                </option>
+              </select>
+
+          </div>
+          <p>Оберіть мову програмування</p>
+          <div  >
+            <select [disabled]="languageDisable" (click)="openPosition(companyInput,languageInput)" class="custom-select" [(ngModel)]="languageInput" [ngModelOptions]="{standalone: true}"> >
+              <option class="select-option">---</option>
+              <option *ngFor="let lang of languageInputByCompany" >
+                {{lang}}
+              </option>
+            </select>
+
+          </div>
+          <p>Оберіть посаду</p>
+          <div  >
+            <select [disabled]="positionDisable" class="custom-select" [(ngModel)]="positionInput" [ngModelOptions]="{standalone: true}"> >
+              <option class="select-option">---</option>
+              <option *ngFor="let pos of positionListByCompanyAndLanguage" >
+                {{pos}}
+              </option>
+            </select>
+
+          </div>
+          <input type="button" [routerLink]="['/vacancy-search/'+companyInput+'/'+languageInput+'/'+positionInput]" class="btn  text-body site-button" value="Пошук"><br>
+
+
+        </div>
+
+      </ul>
+    </div>
+    <div class="col-sm-9">
+      <!---->
+      <div class="row vacancy-item " >
+        <span class="text" >Виберіть джерело отримання: </span>
+        <input  type="button"  (click)="getAllThisList()" class="btn btn-primary text-body site-button" value="Всі сайти"  >
+        <input  type="button" (click)="getdouThisList()" class="btn btn-primary text-body site-button" value="Dou.ua">
+        <input  type="button"  (click)="getgjinniThisList()" class="btn btn-primary text-body site-button" value="Djinni.co">
+      </div>
+      <div class="row vacancy-item" *ngFor="let vac of vacancy" >
+
+        <div class="col-sm-3" >
+          <p class="text-info" (click)="getByComapany(vac.company)" > Компанія: </p>
+          <p class="text-info" > Посада: </p>
+          <p class="text-info" > Місто: </p>
+          <p class="text-info" > Мова програмування: </p>
+          <p class="text-info"> Коротка інформація </p>
+          <a mat-button [routerLink]="['/vacancy-details',vac.id]" >Детальніше</a>
+        </div>
+        <div class="col-sm-9" >
+          <p>{{vac.company}}</p>
+          <p>{{vac.position}}</p>
+          <p>{{vac.sity}}</p>
+          <p>{{vac.language}}</p>
+          <p>{{vac.info}}</p>
+          <p> site {{vac.site}}</p>
+        </div>
+      </div>
+      <ngb-pagination class="d-flex justify-content-center" [boundaryLinks]="true" [collectionSize]="collectionSize"   [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="onPageChanged($event)" ></ngb-pagination>
+
+
+    </div>
+  </div>
+  <!-- end row-->
+  <div class="row-top-matgin-details row">
+    <app-footer></app-footer>
+  </div>
+  <br>
+</div>
